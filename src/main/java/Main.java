@@ -1,40 +1,19 @@
-import java.util.Scanner;
-
-/**
- * Calcula o IMC (índice de massa corporal)
- * autor: carlos.correia@docentes.senai.br
- */
 public class Main {
-    /**
-     * Calcula o IMC com programação estruturada
-     * Vamos transformar isso num programa orientado a objetos
-     */
     public static void main(String[] args) {
-        // leitor de teclado
-        Scanner teclado = new Scanner(System.in);
 
-        // digita peso e altura
-        System.out.print("Digite sua altura (1.XX): ");
-        double altura = teclado.nextDouble();
+        // cria usando o construtor vazio
+        CalcIMC imc = new CalcIMC();
+        imc.setPeso(50); // em vez de imc.peso = 50
+        imc.setAltura(1.50); // em vez de imc.altura = 0;
+        System.out.println(imc); // vai imprimir imc.toString()
 
-        System.out.print("Digite seu peso (XX.X): ");
-        double peso = teclado.nextDouble();
+        // cria usando o construtor com parâmetros
+        // agora não precisa dar setPeso e setAltura
+        CalcIMC imgMagrelo = new CalcIMC(70.0, 2.0);
+        System.out.printf("Peso = %.1fkg, altura = %.2fm, IMC=%.1f\n",
+                imgMagrelo.getPeso(), // em vez de imc.peso
+                imgMagrelo.getAltura(), // em vez de imc.altura
+                imgMagrelo.getIMC());
 
-        // calcula o IMC
-        double imc = peso / (altura*altura);
-
-        // interpreta o resultado
-        System.out.printf("Seu imc é %.1f ", imc);
-
-        if(imc < 19){
-            System.out.println("(magro)");
-        } else if(imc < 25){
-            System.out.println("(normal)");
-        } else if(imc < 30){
-            System.out.println("(sobrepeso)");
-        } else {
-            System.out.println("(obeso)");
-        }
     }
-
 }
